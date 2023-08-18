@@ -13,6 +13,12 @@ baseRouter.get('/greeting', (req, res) => {
     return res.send('Hello world!');
 });
 
+baseRouter.post('/subtract', (req, res) => {
+    let {first,second}=req.body;
+    const sub=first-second;    
+    res.json({ "result": sub });
+});
+
 baseRouter.post('/add', (req, res) => {
     let {first,second}=req.body;
     console.log(first,second);
@@ -21,11 +27,6 @@ baseRouter.post('/add', (req, res) => {
 });
 
 
-baseRouter.post('/subtract', (req, res) => {
-    let {first,second}=req.body;
-    const sub=first-second;    
-    res.json({ "result": sub });
-});
 
 app.use(baseUrl, baseRouter);
 app.listen(PORT, () => {
